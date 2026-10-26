@@ -1,25 +1,20 @@
 #include <Arduino.h>
-#include <ESP32Servo.h>
-const int VRx = 36;
-int xPosition = 0;
-const int servoPin = 4;
-  Servo myServo;
+const int ledred = 39;
+
 void setup() {
-myServo.attach(servoPin);
-Serial.begin(115200);
-pinMode(VRx, INPUT);
+  Serial.begin(115200);
+pinmode(ledred,OUTPOT)
 }
 
 void loop() {
-  xPosition = analogRead(VRx);
-int servoAngle = map(xPosition, 0, 4095, 0, 180);
 
-  Serial.print("X Position: ");
-  Serial.println(xPosition); 
-  delay(50); 
-  myServo.write(servoAngle);
-
-
-  
+  for (int i = 0; i < 255; i++) {
+    analogWrite(ledred, i);
+    delay(10);
+  }
+for (int i = 255; i > 0; i--) {
+    analogWrite(ledred, i);
+    delay(10);
+  }
 
 }
