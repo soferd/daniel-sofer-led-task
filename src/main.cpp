@@ -1,24 +1,26 @@
 #include <Arduino.h>
-const int ledred = 39;
-const int lednf = 36;
+const int ledred = 25;
+const int lednf = 17;
 void setup() {
-  Serial.begin(115200);
-pinmode(ledred,OUTPOT)
-pinmode(lednf,OUTPOT)
+pinMode(ledred,OUTPUT);
+pinMode(lednf,OUTPUT);
 }
 
 void loop() {
 
-  for (int i = 0; i < 255; i++) {
+  for (int i = 0; i < 250; i += 25) {
     analogWrite(ledred, i);
-    delay(10);
+    digitalWrite(lednf,HIGH);
+    delay(300);
+    digitalWrite(lednf,LOW);
+    delay(300);
   }
-for (int i = 255; i > 0; i--) {
+for (int i = 250; i > 0; i -= 25) {
     analogWrite(ledred, i);
-    delay(10);
+    digitalWrite(lednf,HIGH);
+    delay(300);
+    digitalWrite(lednf,LOW);
+    delay(300);
   }
-digitalWrite(lednf,HIGH);
-delay(1000);
-digitalWrite(lednf,LOW);
-delay(1000);
+
 }
